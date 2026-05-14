@@ -63,7 +63,7 @@ export function Hero() {
             style={{ animationDelay: "0.45s" }}
           >
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 shadow-soft transition-all hover:scale-105 hover:shadow-glow cursor-default">
-              <Truck className="h-3.5 w-3.5 text-tropical" /> Free delivery over KWD 599
+              <Truck className="h-3.5 w-3.5 text-tropical" /> Fast Delivery Across Kuwait
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 shadow-soft transition-all hover:scale-105 hover:shadow-glow cursor-default">
               <Clock className="h-3.5 w-3.5 text-tropical" /> 30-min average
