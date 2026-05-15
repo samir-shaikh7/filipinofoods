@@ -1,5 +1,5 @@
 import React from "react";
-import hero from "@/assets/dish.png";
+import hero from "@/assets/logo.jpeg";
 import { ArrowRight, Sparkles, Star, Clock, Truck, MessageCircle } from "lucide-react";
 
 
