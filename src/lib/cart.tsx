@@ -108,7 +108,7 @@ import { formatPrice } from "./utils";
 
 export function buildWhatsAppLink(items: CartLine[], total: number, details: CheckoutDetails, whatsappNumber: string) {
   const lines = items.map((i) => `${i.qty}x ${i.name} - ${CURRENCY}${formatPrice(i.price * i.qty)}`).join("%0A");
-  const pm = details.paymentMethod === "cod" ? "Cash on Delivery" : details.paymentMethod === "gcash" ? "GCash" : "Bank Transfer";
+  const pm = details.paymentMethod === "cod" ? "Cash on Delivery" : details.paymentMethod === "gcash" ? "GCash" : "Payment Link";
   const msg = `Hello Filipino Food Restaurant,%0A%0AI want to place an order:%0A%0A${lines}%0A%0ATotal Amount: ${CURRENCY}${formatPrice(total)}%0A%0APayment Method: ${pm}%0A%0ACustomer Details:%0AName: ${details.name}%0APhone: ${details.phone}%0A%0ADelivery Address:%0A${details.address}%0ALandmark: ${details.landmark}%0ANotes: ${details.notes}%0A%0ALive Location:%0A${details.locationUrl || "Not provided"}%0A%0APlease confirm my order.`;
   const cleanNumber = whatsappNumber.replace(/\D/g, "");
   return `https://wa.me/${cleanNumber}?text=${msg}`;
