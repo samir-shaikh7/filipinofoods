@@ -29,7 +29,7 @@ export default function CartPage() {
 
   const handleLocation = () => {
     setLocating(true);
-    
+
     const geoOptions = {
       enableHighAccuracy: true,
       timeout: 15000, // increased timeout for mobile stability
@@ -47,22 +47,22 @@ export default function CartPage() {
             `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`,
             { headers: { 'User-Agent': 'FilipinoFoodApp/1.0' } }
           );
-          
+
           if (!response.ok) throw new Error('Geocoding service unavailable');
-          
+
           const data = await response.json();
           const readableAddress = data.display_name || `Location: ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
-          
-          setForm((prev) => ({ 
-            ...prev, 
-            locationUrl: mapsUrl, 
+
+          setForm((prev) => ({
+            ...prev,
+            locationUrl: mapsUrl,
             address: prev.address || readableAddress // Don't overwrite if user already typed something
           }));
         } catch (error) {
           console.warn("Geocoding failed, falling back to coordinates only:", error);
-          setForm((prev) => ({ 
-            ...prev, 
-            locationUrl: mapsUrl 
+          setForm((prev) => ({
+            ...prev,
+            locationUrl: mapsUrl
           }));
         } finally {
           setLocating(false);
@@ -73,7 +73,7 @@ export default function CartPage() {
         let msg = "Could not get your location.";
         if (err.code === 1) msg = "Location permission denied. Please allow location access in your browser settings.";
         else if (err.code === 3) msg = "Location request timed out. Please try again or enter address manually.";
-        
+
         alert(msg);
         setLocating(false);
       },
@@ -87,11 +87,11 @@ export default function CartPage() {
       alert("Please fill in all required fields (Name, Phone, Address).");
       return;
     }
-    
+
     const whatsappNum = contact?.whatsapp || "639999999999";
     const link = buildWhatsAppLink(items, total, form, whatsappNum);
     window.open(link, "_blank");
-    
+
     // Clear cart and redirect after a small delay
     setTimeout(() => {
       clear();
@@ -107,8 +107,8 @@ export default function CartPage() {
         </div>
         <h1 className="text-3xl font-black mb-2">Your cart is empty</h1>
         <p className="text-foreground/50 max-w-sm mb-10">Looks like you haven't added anything to your cart yet. Browse our menu to find something delicious.</p>
-        <button 
-          onClick={() => navigate("/")} 
+        <button
+          onClick={() => navigate("/")}
           className="rounded-full gradient-tropical px-10 py-4 text-lg font-bold text-white shadow-glow transition hover:scale-105 active:scale-95"
         >
           Explore Menu
@@ -122,14 +122,14 @@ export default function CartPage() {
       <div className="mx-auto max-w-7xl px-4">
         {/* Header Navigation */}
         <div className="mb-10 flex items-center justify-between">
-          <button 
-            onClick={() => isCheckout ? setIsCheckout(false) : navigate("/")} 
+          <button
+            onClick={() => isCheckout ? setIsCheckout(false) : navigate("/")}
             className="flex items-center gap-2 text-foreground/50 transition hover:text-tropical"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="font-bold">{isCheckout ? "Back to Cart" : "Continue Shopping"}</span>
           </button>
-          
+
           <div className="hidden sm:flex items-center gap-4">
             <div className={`h-2 w-2 rounded-full ${!isCheckout ? "bg-tropical" : "bg-border"}`} />
             <div className="h-px w-8 bg-border" />
@@ -154,34 +154,34 @@ export default function CartPage() {
                     <div className="flex flex-1 flex-col justify-center">
                       <h3 className="text-lg font-bold line-clamp-1">{item.name}</h3>
                       <p className="text-sm font-bold text-tropical mt-1">{CURRENCY}{formatPrice(item.price * item.qty)}</p>
-                      
+
                       <div className="mt-4 flex w-fit items-center gap-3 rounded-2xl bg-muted/50 p-1.5">
-                        <button 
-                          onClick={() => setQty(item.id, item.qty - 1)} 
+                        <button
+                          onClick={() => setQty(item.id, item.qty - 1)}
                           className="flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-sm transition hover:text-coral active:scale-90"
                         >
                           <Minus className="h-4 w-4" />
                         </button>
                         <span className="w-8 text-center text-lg font-black text-tropical">{item.qty}</span>
-                        <button 
-                          onClick={() => setQty(item.id, item.qty + 1)} 
+                        <button
+                          onClick={() => setQty(item.id, item.qty + 1)}
                           className="flex h-10 w-10 items-center justify-center rounded-xl gradient-tropical text-white shadow-soft transition active:scale-90"
                         >
                           <Plus className="h-4 w-4" />
                         </button>
                       </div>
                     </div>
-                    <button 
-                      onClick={() => remove(item.id)} 
+                    <button
+                      onClick={() => remove(item.id)}
                       className="flex h-12 w-12 items-center justify-center rounded-2xl text-foreground/20 transition hover:bg-coral/10 hover:text-coral"
                     >
                       <Trash2 className="h-5 w-5" />
                     </button>
                   </div>
                 ))}
-                
-                <button 
-                  onClick={clear} 
+
+                <button
+                  onClick={clear}
                   className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-foreground/30 hover:text-coral transition mx-auto sm:mx-0"
                 >
                   Clear all items
@@ -191,7 +191,7 @@ export default function CartPage() {
               <form id="checkout-form" onSubmit={submitOrder} className="space-y-8 animate-fade-in">
                 {/* Personal Information */}
                 <div className="rounded-[2.5rem] bg-white p-8 shadow-card">
-                   <h2 className="text-xl font-bold mb-6 flex items-center gap-3">
+                  <h2 className="text-xl font-bold mb-6 flex items-center gap-3">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full gradient-tropical text-white text-xs">1</span>
                     Personal Details
                   </h2>
@@ -209,7 +209,7 @@ export default function CartPage() {
 
                 {/* Delivery Information */}
                 <div className="rounded-[2.5rem] bg-white p-8 shadow-card">
-                   <div className="mb-6 flex items-center justify-between">
+                  <div className="mb-6 flex items-center justify-between">
                     <h2 className="text-xl font-bold flex items-center gap-3">
                       <span className="flex h-8 w-8 items-center justify-center rounded-full gradient-tropical text-white text-xs">2</span>
                       Delivery Location
@@ -247,7 +247,7 @@ export default function CartPage() {
                     {[
                       { id: "cod", title: "Cash on Delivery", icon: Banknote, desc: "Safe & Simple" },
                       { id: "gcash", title: "GCash", icon: Wallet, desc: "Quick & Easy" },
-                      { id: "bank", title: "Bank Transfer", icon: Building2, desc: "Secure Pay" },
+                      { id: "bank", title: "Payment Link", icon: Building2, desc: "Secure Pay" },
                     ].map((m) => (
                       <button
                         key={m.id}
@@ -282,7 +282,7 @@ export default function CartPage() {
           <div className="lg:col-span-4 lg:sticky lg:top-24">
             <div className="rounded-[2.5rem] bg-white p-8 shadow-elegant">
               <h2 className="text-2xl font-black mb-6">Summary</h2>
-              
+
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between text-foreground/50 font-bold">
                   <span>Subtotal</span>
@@ -316,7 +316,7 @@ export default function CartPage() {
                   Order on WhatsApp
                 </button>
               )}
-              
+
               <p className="mt-6 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/30">
                 Secure WhatsApp Ordering
               </p>
