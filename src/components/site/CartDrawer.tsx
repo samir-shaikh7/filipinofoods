@@ -252,7 +252,7 @@ export function CartDrawer() {
                   {[
                     { id: "cod", title: "Cash on Delivery", desc: "Pay with cash at your doorstep", icon: Banknote },
                     { id: "gcash", title: "GCash", desc: "Digital wallet transfer", icon: Wallet },
-                    { id: "bank", title: "Bank Transfer", desc: "BDO / BPI / UnionBank", icon: Building2 },
+                    { id: "bank", title: "Payment Link", desc: "BDO / BPI / UnionBank", icon: Building2 },
                   ].map((m) => (
                     <button
                       key={m.id}
