@@ -1,4 +1,4 @@
-import logo from "@/assets/logo2.jpeg";
+import logo from "@/assets/logo2.png";
 
 const STATS = [
   { v: "12+", l: "Years of mastery" },
@@ -15,11 +15,11 @@ export function AboutSection() {
         <div className="flex items-center justify-center p-4">
           <div className="relative group">
             <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-mango/20 via-tropical/20 to-coral/20 blur-2xl opacity-50 transition-opacity group-hover:opacity-100" />
-            <div className="relative overflow-hidden rounded-full bg-white shadow-pop ring-4 ring-white/10 transition-transform duration-500 hover:scale-[1.02]">
+            <div className="relative overflow-hidden transition-transform duration-500 hover:scale-[1.02]">
               <img
                 src={logo}
                 alt="Filipino Food Logo"
-                className="h-72 w-72 object-cover md:h-120 md:w-120"
+                className="h-72 w-72 object-contain md:h-[30rem] md:w-[30rem]"
               />
             </div>
           </div>

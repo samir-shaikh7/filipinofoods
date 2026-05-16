@@ -1,5 +1,5 @@
 import React from "react";
-import hero from "@/assets/logo.jpeg";
+import hero from "@/assets/logo.png";
 import { ArrowRight, Sparkles, Star, Clock, Truck, MessageCircle } from "lucide-react";
 
 
@@ -96,14 +96,14 @@ export function Hero() {
         <div className="relative lg:col-span-5">
           <div className="relative mx-auto w-full max-w-[500px]">
             {/* Forced 1:1 Aspect Ratio Wrapper */}
-            <div className="relative w-full overflow-hidden rounded-full bg-white shadow-pop ring-1 ring-white/10" style={{ aspectRatio: "1 / 1" }}>
+            <div className="relative w-full overflow-hidden" style={{ aspectRatio: "1 / 1" }}>
               {/* Spinning content container */}
               <div className={`h-full w-full animate-spin-slow transition-all duration-1000 ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>
                 <img
                   src={hero}
-                  alt="Premium Filipino chicken inasal plate"
+                  alt="Filipino Food Logo"
                   onLoad={() => setIsLoaded(true)}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                   width={520}
                   height={520}
                   fetchPriority="high"
