@@ -54,6 +54,11 @@ export function ContactSection() {
           </div>
 
           <div className="lg:col-span-2 flex flex-col h-full">
+            <div className="mb-4 text-center">
+              <div className="inline-block rounded-full bg-mango/20 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-tropical">
+                Our Location
+              </div>
+            </div>
             <div className="mb-4 flex items-start gap-3 text-[11px] md:text-[13px] font-bold uppercase tracking-wider text-tropical">
               <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-mango text-white mt-0.5 shadow-sm">
                 <MapPin className="h-3 w-3" />
