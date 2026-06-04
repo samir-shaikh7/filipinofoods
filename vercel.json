@@ -1,0 +1,29 @@
+{
+    "rewrites": [
+        {
+            "source": "/sitemap.xml",
+            "destination": "/sitemap.xml"
+        },
+        {
+            "source": "/robots.txt",
+            "destination": "/robots.txt"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/"
+        }
+    ],
+    "images": {
+        "domains": [
+            "vufhdfelxqhslymdpdpt.supabase.co",
+            "images.unsplash.com"
+        ],
+        "minimumCacheTTL": 31536000
+    },
+    "crons": [
+        {
+            "path": "/api/ping",
+            "schedule": "0 0 */5 * *"
+        }
+    ]
+}
