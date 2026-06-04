@@ -16,9 +16,10 @@
     "images": {
         "domains": [
             "vufhdfelxqhslymdpdpt.supabase.co",
-            "images.unsplash.com"
+            "images.unsplash.com",
+            "cs.cdn-upm.com"
         ],
-        "sizes": [256, 384, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+        "sizes": [128, 256, 384, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
         "minimumCacheTTL": 31536000
     },
     "crons": [
