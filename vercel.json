@@ -1,0 +1,43 @@
+{
+    "rewrites": [
+        {
+            "source": "/sitemap.xml",
+            "destination": "/sitemap.xml"
+        },
+        {
+            "source": "/robots.txt",
+            "destination": "/robots.txt"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/"
+        }
+    ],
+    "images": {
+        "domains": [
+            "mbbvlutzmlnbdizsgltx.supabase.co",
+            "images.unsplash.com",
+            "cs.cdn-upm.com"
+        ],
+        "sizes": [
+            128,
+            256,
+            384,
+            640,
+            750,
+            828,
+            1080,
+            1200,
+            1920,
+            2048,
+            3840
+        ],
+        "minimumCacheTTL": 31536000
+    },
+    "crons": [
+        {
+            "path": "/api/ping",
+            "schedule": "0 0 */5 * *"
+        }
+    ]
+}
