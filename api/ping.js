@@ -2,13 +2,20 @@ export default async function handler(req, res) {
     try {
         // Perform a lightweight SELECT query on the 'settings' table.
         // This ensures actual Postgres database activity, preventing Supabase from pausing the project.
+        const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+        const supabaseKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
+
+        if (!supabaseUrl || !supabaseKey) {
+            return res.status(500).json({ error: "Missing Supabase environment variables in Vercel." });
+        }
+
         const response = await fetch(
-            `${process.env.VITE_SUPABASE_URL}/rest/v1/settings?select=id&limit=1`,
+            `${supabaseUrl}/rest/v1/settings?select=id&limit=1`,
             {
                 method: "GET",
                 headers: {
-                    "apikey": process.env.VITE_SUPABASE_ANON_KEY,
-                    "Authorization": `Bearer ${process.env.VITE_SUPABASE_ANON_KEY}`
+                    "apikey": supabaseKey,
+                    "Authorization": `Bearer ${supabaseKey}`
                 },
             }
         );
